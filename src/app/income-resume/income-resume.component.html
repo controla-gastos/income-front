@@ -3,11 +3,11 @@
         <div fxLayout="column" fxLayoutGap="5px">
             <div>
                 <span>Renda do mês</span>
-                <p>R$ 283,00 de R$ 8400,00 planejados</p>
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <p>{{($income | async )?.plannedActual | currency:'R$'}} de {{($income | async )?.plannedIncome | currency:'R$'}} planejados</p>
+                <mat-progress-bar mode="determinate" [value]="calculatePercent(($income | async )?.plannedActual, ($income | async )?.plannedIncome)"></mat-progress-bar>
             </div>
             <div fxLayout="row" fxLayoutAlign="end">
-                R$: 8166.54 abaixo
+                {{($income | async )?.plannedIncome - ($income | async )?.plannedActual | currency:'R$'}}
             </div>
             <div>
                 <mat-divider></mat-divider>
@@ -16,11 +16,11 @@
         <div fxLayout="column" fxLayoutGap="5px">
             <div>
                 <span>Gasto no mês</span>
-                <p>R$ 283,00 de R$ 8400,00 planejados</p>
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <p>{{($income | async )?.amountSpent | currency:'R$'}} de {{($income | async )?.plannedAmountSpend | currency:'R$'}} planejados</p>
+                <mat-progress-bar mode="determinate" [value]="calculatePercent(($income | async )?.amountSpent, ($income | async )?.plannedAmountSpend)"></mat-progress-bar>
             </div>
             <div fxLayout="row" fxLayoutAlign="end">
-                R$: 8166.54 abaixo
+                {{($income | async )?.plannedAmountSpend - ($income | async )?.amountSpent | currency:'R$'}}
             </div>
             <div>
                 <mat-divider></mat-divider>
