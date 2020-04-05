@@ -30,7 +30,7 @@ import { environment } from 'src/environments/environment';
     EffectsModule.forRoot([IncomeEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
+      logOnly: !environment.production
     }),
     HttpClientModule
   ],
