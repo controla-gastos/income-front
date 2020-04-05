@@ -6,6 +6,7 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('./income-resume/income-resume.module').then(m => m.IncomeResumeModule)},
+  {path: 'income/income-edit', loadChildren: () => import('./income-edit/income-edit.module').then(m => m.IncomeEditModule)},
   {path: '**', component: EmptyRouteComponent},
 ];
 
