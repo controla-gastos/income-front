@@ -1,41 +1,44 @@
 <mat-card style="margin: 10px">
     <mat-card-content fxLayout="column" fxLayoutGap="25px">
+        <form *ngIf="form" [formGroup]="form">
+            <div fxLayout="column" fxLayoutGap="5px">
+                <div fxFlex fxLayout='column'>
+                    <mat-form-field>
+                        <mat-label>Renda Planejada</mat-label>
+                        <input formControlName="plannedIncome" matInput type="number">
+                        <mat-error *ngIf="isFieldValid('plannedIncome')">Insira uma renda planejada</mat-error>
+                        <span matPrefix>R$&nbsp;</span>
+                    </mat-form-field>
+                </div>
+                <div fxFlex fxLayout='column'>
+                    <mat-form-field>
+                        <mat-label>Renda Atual</mat-label>
+                        <input formControlName="plannedActual" matInput type="number">
+                        <mat-error *ngIf="isFieldValid('plannedActual')">Insira uma renda atual</mat-error>
+                        <span matPrefix>R$&nbsp;</span>
+                    </mat-form-field>
+                </div>
+                <div fxFlex fxLayout='column'>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
 
-        <div fxLayout="column" fxLayoutGap="5px">
-            <div fxFlex fxLayout='column'>
-                <mat-form-field>
-                    <mat-label>Renda Planejada</mat-label>
-                    <input matInput type="number">
-                    <span matPrefix>R$&nbsp;</span>
-                </mat-form-field>
+            <div fxLayout="column" fxLayoutGap="5px">
+                <div fxFlex fxLayout='column'>
+                    <mat-form-field>
+                        <mat-label>Gasto Mensal Planejado</mat-label>
+                        <input formControlName="plannedAmountSpend" matInput type="number">
+                        <mat-error *ngIf="isFieldValid('plannedActual')">Insira uma gasto mensal planejado</mat-error>
+                        <span matPrefix>R$&nbsp;</span>
+                    </mat-form-field>
+                </div>
             </div>
-            <div fxFlex fxLayout='column'>
-                <mat-form-field>
-                    <mat-label>Renda Atual</mat-label>
-                    <input matInput type="number">
-                    <span matPrefix>R$&nbsp;</span>
-                </mat-form-field>
-            </div>
-            <div fxFlex fxLayout='column'>
-                <mat-divider></mat-divider>
-            </div>
-        </div>
-
-        <div fxLayout="column" fxLayoutGap="5px">
-            <div fxFlex fxLayout='column'>
-                <mat-form-field>
-                    <mat-label>Gastos Mensal Planejado</mat-label>
-                    <input matInput type="number">
-                    <span matPrefix>R$&nbsp;</span>
-                </mat-form-field>
-            </div>
-        </div>
-
+        </form>
     </mat-card-content>
     <mat-card-actions>
         <div>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button>Salvar</button>
+                <button (click)="onSubmit()" mat-button>Salvar</button>
             </div>
         </div>
     </mat-card-actions>
